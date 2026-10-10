@@ -1,0 +1,27 @@
+Oui, il existe beaucoup d'autres méthodes. Voici les principales familles, classées par pertinence pour ce projet (ESP8266, RAM/CPU limités) :
+1. Variantes de moyennes (simples à ajouter)
+- WMA (moyenne pondérée linéaire) : poids croissants vers le récent → moins de retard que la SMA, plus de poids au présent.
+- Moyenne cumulée (CA) : moyenne de tout l'historique (mémoire infinie) → très stable, mais très lente.
+- Moyenne tronquée / winsorisée : on retire les X % extrêmes puis on moyenne → robuste comme la médiane, mais garde la moyenne.
+- DEMA / TEMA (double/triple EMA) : EMA « accélérée » qui réduit le retard tout en lissant.
+2. Filtres robustes aux pics
+- Hampel : médiane glissante + remplacement des points hors k·MAD → excellent contre les valeurs aberrantes (encore mieux que la médiane seule).
+- Filtre z-score / écart-type : rejette les points à plus de k σ de la moyenne.
+- Filtre de Kalman 1D : optimal bruit + modèle, auto-adaptatif (idéal capteur type BME280), mais plus de calcul et 2 paramètres à régler.
+- Filtre α-β : variante simplifiée de Kalman.
+3. Filtres de signal (DSP)
+- Passe-bas RC / exponentiel : c'est mathématiquement une EMA.
+- Filtre de Gauss (noyau gaussien) : lissage très doux.
+- FIR / IIR (Butterworth…) : lissage fréquentiel, mais overkill sur ESP8266.
+- Savitzky-Golay : ajuste un polynôme local → lisse en préservant les pics (utile si on veut garder les extrema).
+4. Lissage « orienté tendance »
+- Holt / Holt-Winters (lissage exponentiel double/triple) : gère tendance (et saisonnalité) → utile pour le graphe de tendance.
+- Régression locale (LOWESS/LOESS) : lourd.
+5. Anti-rebond (pas du lissage mais complémentaire)
+- Hystérésis / deadband : ne bouge la valeur que si la variation dépasse un seuil → évite le « scintillement » de l'affichage.
+Recommandation pour ce projet
+Les plus intéressants à ajouter, dans l'ordre :
+1. WMA (facile, peu de code, moins de retard que SMA) ;
+2. Hampel (facile, excellent contre les pics, s'appuie sur le tri déjà présent) ;
+3. Kalman 1D (plus « pro », auto-adaptatif, ~15 lignes) ;
+4. Deadband (affichage/Domoticz seulement).

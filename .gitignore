@@ -1,0 +1,42 @@
+# ============================================================================
+# .gitignore — Smoothing
+# Fichiers locaux et artefacts à NE PAS publier sur GitHub.
+# ============================================================================
+
+# --- Fichiers locaux (guides agents, jamais publiés) ---
+AGENTS.md
+CLAUDE.md
+copilot-instructions.md
+
+# --- Artefacts du skill code-reviews-openfox (recherche de bugs) ---
+analyse.md
+changelog.md
+criteres.md
+
+# --- Build / temporaires ---
+*.o
+*.obj
+*.a
+*.lib
+*.exe
+*.out
+*.gch
+*.pch
+*.d
+_tmp_*
+*.tmp
+test.cpp
+
+# --- Système / éditeurs ---
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+.vscode/
+.idea/
+
+# --- PlatformIO ---
+.pio/
+.pioenvs/
+.piolibdeps/
