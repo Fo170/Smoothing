@@ -1,6 +1,6 @@
 {
   "name": "Smoothing",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Lissage/filtrage generique de signaux de capteurs (header-only, sans dependance) : NONE, SMA, WMA, EMA, DEMA, TEMA, mediane, Hampel, moyenne tronquee/winsorisee, rejet z-score, filtre de Kalman 1D, moyenne cumulee, gaussien, Savitzky-Golay, passe-bas IIR, Holt, alpha-beta, hysteresis (deadband).",
   "keywords": "smoothing, filter, kalman, median, hampel, moving-average, sensor, esp8266, esp32",
   "license": "GPL-3.0",
