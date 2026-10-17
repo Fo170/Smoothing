@@ -69,6 +69,9 @@
 #ifndef SMOOTHING_H
 #define SMOOTHING_H
 
+
+// Version de la librairie (source UNIQUE — agrégée par liste_lib.h)
+#define __SMOOTHING_H_VERSION__ "1.1.1"
 #include <math.h>
 #include <stdint.h>
 
